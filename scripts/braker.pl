@@ -3178,7 +3178,7 @@ sub set_JAVA_PATH {
         print STDERR $logString;
         exit(1);
     }
-    $cmdString = "java -version 2>&1 | awk -F[\\\"\\\.] -v OFS=. 'NR==1{print \$2,\$3}'";
+    $cmdString = "$JAVA_PATH/java -version 2>&1 | awk -F[\\\"\\\.] -v OFS=. 'NR==1{print \$2,\$3}'";
     my @javav = `$cmdString` or die("Failed to execute: $cmdString");
     if(not ($javav[0] =~ m/1\.8/ )){
         $prtStr = "\# " . (localtime) . " ERROR: in file " . __FILE__
